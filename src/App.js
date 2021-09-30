@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, Component } from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Brian Connolly
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    const name = "Ultan";
+    const loading = false;
+    const showName = true;
+    return (
+      <Fragment>
+        {loading ? (
+          <h4>Loading...</h4>
+        ) : (
+          <h1>Hello {showName && name}</h1>
+        )}
+      </Fragment>
+    );
+  }
 }
 
 export default App;
