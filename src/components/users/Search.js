@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from 'prop-types'
+import githubContext from "../../context/github/githubContext";
 
 
 // Functional Component
-const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
+const Search = ({ showClear, clearUsers, setAlert }) => {
+  const GithubContext = useContext(githubContext);
+
   const [text, setText] = useState('')
 
 
@@ -13,7 +16,7 @@ const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
     if(text === '') {
         setAlert('Please enter some text', 'light');
     } else {
-        searchUsers(text);
+      GithubContext.searchUsers(text);
         setText('')
     }
   }
@@ -46,7 +49,6 @@ const Search = ({ searchUsers, showClear, clearUsers, setAlert }) => {
 }
 
 Search.propTypes = {
-  searchUsers: PropTypes.func.isRequired,
   clearUsers: PropTypes.func.isRequired,
   showClear: PropTypes.bool.isRequired,
   setAlert: PropTypes.func.isRequired,
