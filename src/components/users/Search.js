@@ -4,7 +4,7 @@ import githubContext from "../../context/github/githubContext";
 
 
 // Functional Component
-const Search = ({ showClear, clearUsers, setAlert }) => {
+const Search = ({ setAlert }) => {
   const GithubContext = useContext(githubContext);
 
   const [text, setText] = useState('')
@@ -39,18 +39,16 @@ const Search = ({ showClear, clearUsers, setAlert }) => {
           className="btn btn-dark btn-block"
         />
       </form>
-      {showClear && (
+      {GithubContext.users.length > 0 && (
           <button 
           className="btn btn-light btn-block"
-          onClick={clearUsers}>Clear</button>
+          onClick={GithubContext.clearUsers}>Clear</button>
       )}
     </div>
   );
 }
 
 Search.propTypes = {
-  clearUsers: PropTypes.func.isRequired,
-  showClear: PropTypes.bool.isRequired,
   setAlert: PropTypes.func.isRequired,
 }
 
