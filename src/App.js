@@ -1,10 +1,9 @@
-import React, { useState, Fragment } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
-import Users from "./components/users/Users";
 import User from "./components/users/User";
-import Search from "./components/users/Search";
 import Alert from "./components/layout/Alert";
+import Home from './components/pages/Home';
 import About from "./components/pages/About";
 
 import GithubState from "./context/github/GithubState";
@@ -46,13 +45,7 @@ const App = () => {
               <Route
                 exact
                 path="/"
-                render={(props) => (
-                  <Fragment>
-                    <Search
-                    />
-                    <Users />
-                  </Fragment>
-                )}
+                component={Home}
               />
               <Route exact path="/about" component={About} />
               <Route
